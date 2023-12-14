@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv(r"C:\Users\haak1\Desktop\boostcamp\project1\train\train.csv")
+df = pd.read_csv("../train/train.csv")
 
 id_list = []
 label_list = []
@@ -19,7 +19,5 @@ for i in range(len(df["id"])):
         label_list += [1] * 7
 
 df2 = pd.DataFrame({"id": id_list, "gender_label": label_list})
-# print(df2)
-df2.to_csv(
-    r"C:\Users\haak1\Desktop\boostcamp\project1\train\gender_train.csv", index=False
-)
+
+df2.to_csv("../gender_train.csv", index=True)

@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv(r"C:\Users\haak1\Desktop\boostcamp\project1\train\train.csv")
+df = pd.read_csv("../train/train.csv")
 
 id_list = []
 label_list = []
@@ -22,6 +22,4 @@ for i in range(len(df["id"])):
     label_list.append(1)
 
 df2 = pd.DataFrame({"id": id_list, "mask_label": label_list})
-df2.to_csv(
-    r"C:\Users\haak1\Desktop\boostcamp\project1\train\mask_train.csv", index=False
-)
+df2.to_csv("../mask_train.csv", index=True)
