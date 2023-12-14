@@ -32,7 +32,6 @@ else
 fi
 echo -e "\e[34mFin data download\e[0m"
 
-conda 환경 생성
 conda env create -f environment.yml
 source activate level1
 echo -e "\e[34mFin conda env\e[0m"
