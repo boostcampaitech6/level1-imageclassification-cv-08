@@ -12,10 +12,9 @@ bash /tmp/${MINICONDA_INSTALLER_SCRIPT} -b -p ${MINICONDA_PREFIX}
 
 # Miniconda 초기화 및 PATH 설정
 eval "$(${MINICONDA_PREFIX}/bin/conda shell.bash hook)"
+source ~/.bashrc
 conda init
 conda config --set auto_activate_base false
-conda update --all -y
-conda update -n base -c defaults conda
 
 # 임시 파일 삭제
 rm /tmp/${MINICONDA_INSTALLER_SCRIPT}
@@ -32,8 +31,11 @@ else
 fi
 echo -e "\e[34mFin data download\e[0m"
 
+CONDA_BASE=$(conda info --base)
+. $CONDA_BASE/etc/profile.d/conda.sh
+
 conda env create -f environment.yml
-source activate level1
+conda activate level1
 echo -e "\e[34mFin conda env\e[0m"
 
 # git 설정
