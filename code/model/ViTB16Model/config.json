@@ -1,0 +1,23 @@
+{
+    "seed": 42,
+    "epochs": 13,
+    "dataset": "MaskBaseDataset",
+    "augmentation": "BaseAugmentation",
+    "resize": [
+        224,
+        224
+    ],
+    "batch_size": 64,
+    "valid_batch_size": 1000,
+    "model": "VITB16Model",
+    "optimizer": "Adam",
+    "lr": 5e-06,
+    "val_ratio": 0.2,
+    "criterion": "label_smoothing",
+    "lr_decay_step": 20,
+    "log_interval": 20,
+    "name": "exp",
+    "data_dir": "/data/ephemeral/home/train/images",
+    "model_dir": "./model",
+    "n_splits": 5
+}

@@ -2,6 +2,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,python,images,visualstudiocode
 
 ### Images ###
+
+*.csv
+*.pth
+
 # JPEG
 *.jpg
 *.jpeg
