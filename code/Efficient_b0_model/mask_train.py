@@ -91,7 +91,7 @@ test_transform=A.Compose([A.Resize(CFG['IMG_HEIGHT'], CFG['IMG_WIDTH']),
 # In[ ]:
 
 
-mask=pd.read_csv('/home/kangdg22/meta_Assignment/boostcamp/my_code/dataset/mask.csv')
+mask=pd.read_csv('/dataset/mask.csv')
 
 
 # In[ ]:
@@ -255,7 +255,7 @@ def train(model, optimizer, train_loader, test_loader, scheduler, device, k_idx,
         if best_score<val_score:
             best_model=model
             best_score=val_score
-            torch.save(best_model.state_dict(), f'/home/kangdg22/meta_Assignment/boostcamp/my_code/soft_voting/cutmix_mask/fold_best_model{k_idx+1}.pt')
+            torch.save(best_model.state_dict(), f'/fold_best_model{k_idx+1}.pt')
 
     return best_model
 
@@ -310,8 +310,8 @@ def predict(model: nn.Module, test_loader, weight_save_path, device) -> np.array
 
 
 test_list=[]
-path='/home/kangdg22/meta_Assignment/boostcamp/my_code/dataset/test_images'
-test_data=pd.read_csv('/home/kangdg22/meta_Assignment/boostcamp/my_code/dataset/info.csv')
+path='/dataset/test_images'
+test_data=pd.read_csv('/dataset/info.csv')
 for i in test_data['ImageID']:
     test_list.append(path+'/'+i)
 
@@ -326,7 +326,7 @@ test_loader=DataLoader(test_dataset, batch_size=CFG['BATCH_SIZE'], shuffle=False
 # In[ ]:
 
 
-weight_save_path=[f'/home/kangdg22/meta_Assignment/boostcamp/my_code/soft_voting/cutmix_mask/fold_best_model{i}.pt' for i in range(1,6)]
+weight_save_path=[f'/fold_best_model{i}.pt' for i in range(1,6)]
 
 
 # In[ ]:
@@ -346,7 +346,7 @@ df_mask=pd.DataFrame({'ImageID':test_data['ImageID'],'mask':pred})
 # In[ ]:
 
 
-df_mask.to_csv('/home/kangdg22/meta_Assignment/boostcamp/my_code/df_cutmix_mask.csv', index=False)
+df_mask.to_csv('/my_code/df_cutmix_mask.csv', index=False)
 
 
 # In[ ]:
